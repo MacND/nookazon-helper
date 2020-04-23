@@ -1,0 +1,39 @@
+version: '3.0'
+services:
+  discord-bot:
+    build:
+      .
+    depends-on:
+      - mariadb
+    image: node:latest-alpine
+    environment:
+      DISCORD_TOKEN: changeme
+      COMMAND_PREFIX: '!'
+      DBHOST: mariadb:3306
+      DBUSER: nook
+      DBPASS: changeme
+      DBNAME: nookazon
+    logging:
+      driver: syslog
+      options:
+        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
+
+  mariadb:
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: nookazon
+      MYSQL_USER: nook
+      MYSQL_PASSWORD: changeme
+    logging:
+      driver: syslog
+      options:
+        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
+    networks:
+      - backend
+    restart: on-failure
+    volumes:
+      - databases:/var/lib/mysql
+
+volumes:
+ databases:

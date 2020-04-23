@@ -1,0 +1,31 @@
+{
+  "name": "nookazon-helper",
+  "version": "0.1.0",
+  "description": "A DiscordJS bot for storing and recalling Nookazon profiles",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macnd/nookazon-helper.git"
+  },
+  "keywords": [
+    "nookazon",
+    "animal",
+    "crossing",
+    "nodejs"
+  ],
+  "author": "Jonathan Linn <npmjs@voluspa.app> (https://github.com/MacND)",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/macnd/nookazon-helper/issues"
+  },
+  "homepage": "https://github.com/macnd/nookazon-helper#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "enmap": "^5.2.4",
+    "fs": "0.0.1-security",
+    "mysql2": "^2.1.0"
+  }
+}

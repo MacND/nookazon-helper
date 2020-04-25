@@ -22,7 +22,7 @@ jobs:
   include:
     - stage: test
       script: 
-      - npm run test
+      - cd src && npm run test
       name: "Tests"
 
     - stage: build

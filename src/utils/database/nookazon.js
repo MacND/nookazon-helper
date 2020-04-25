@@ -1,7 +1,7 @@
 module.exports = pool => ({
   getByDiscordId: async (discordId) => {
     try {
-      let [rows, fields] = await pool.query('SELECT * FROM nookazon WHERE discord_id = :discordId;',
+      let [rows, fields] = await pool.query('SELECT * FROM data WHERE discord_id = :discordId;',
         {
           discordId
         }
@@ -14,7 +14,7 @@ module.exports = pool => ({
 
   addProfile: async (discordId, nookazonUrl) => {
     try {
-      let [rows, fields] = await pool.query('INSERT INTO nookazon (discord_id, nookazon_profile_url) VALUES (:discordId, :nookazonUrl) ON DUPLICATE KEY UPDATE nookazon_profile_url = :nookazonUrl;',
+      let [rows, fields] = await pool.query('INSERT INTO data (discord_id, nookazon_profile_url) VALUES (:discordId, :nookazonUrl) ON DUPLICATE KEY UPDATE nookazon_profile_url = :nookazonUrl;',
         {
           discordId,
           nookazonUrl

@@ -1,39 +1,34 @@
 version: '3.0'
 services:
   discord-bot:
-    build:
-      .
-    depends-on:
+    image: sudomac/nookazon-helper:latest
+    depends_on:
       - mariadb
-    image: node:latest-alpine
     environment:
-      DISCORD_TOKEN: changeme
-      COMMAND_PREFIX: '!'
-      DBHOST: mariadb:3306
+      DISCORD_TOKEN: 'fill-me-in'
+      COMMAND_PREFIX: 'fill-me-in'
+      DBHOST: mariadb
       DBUSER: nook
-      DBPASS: changeme
+      DBPASS: 'fill-me-in'
       DBNAME: nookazon
     logging:
-      driver: syslog
+      driver: json-file
       options:
         tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
-
   mariadb:
     image: mariadb:10.2
     environment:
-      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_ROOT_PASSWORD: 'fill-me-in'
       MYSQL_DATABASE: nookazon
       MYSQL_USER: nook
-      MYSQL_PASSWORD: changeme
+      MYSQL_PASSWORD: 'fill-me-in'
     logging:
-      driver: syslog
+      driver: json-file
       options:
         tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
-    networks:
-      - backend
     restart: on-failure
     volumes:
-      - databases:/var/lib/mysql
-
+      - db_data:/var/lib/mysql
+      - ./src/utils/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
 volumes:
- databases:
+ db_data:

@@ -9,7 +9,7 @@ node_js:
 
 cache:
   directories:
-    - node_modules
+    - src/node_modules
 
 stages:
   - test
@@ -28,7 +28,7 @@ jobs:
     - stage: build
       script: 
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t nookazon-helper .
+      - docker build -t nookazon-helper src/
       name: "Build Docker image"
 
     - stage: upload

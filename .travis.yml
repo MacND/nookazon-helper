@@ -1,5 +1,3 @@
-sudo: required
-
 services:
   - docker
 
@@ -22,7 +20,8 @@ jobs:
   include:
     - stage: test
       script: 
-      - cd src && npm run test
+      - cd src
+      - npm run test
       name: "Tests"
 
     - stage: build

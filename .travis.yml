@@ -7,9 +7,7 @@ node_js:
 
 stages:
   - test
-  - name: build
-    if: branch = master
-  - name: deploy
+  - name: build-deploy
     if: branch = master
 
 jobs:
@@ -19,15 +17,11 @@ jobs:
         - npm run test
       name: "Tests"
 
-    - stage: build
+    - stage: build-deploy
       script: 
         - docker build -t nookazon-helper .
-      name: "Build Docker image"
-
-    - stage: upload
-      script:
         - docker images
         - docker tag nookazon-helper $DOCKER_USERNAME/nookazon-helper
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker push $DOCKER_USERNAME/nookazon-helper
-      name: "Push Docker image to repo"
+      name: "Build and Push Docker image"

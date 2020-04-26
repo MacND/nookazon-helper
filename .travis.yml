@@ -16,13 +16,12 @@ jobs:
   include:
     - stage: test
       script: 
-        - cd src/
         - npm run test
       name: "Tests"
 
     - stage: build
       script: 
-        - docker build -t nookazon-helper src/
+        - docker build -t nookazon-helper .
       name: "Build Docker image"
 
     - stage: upload

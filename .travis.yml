@@ -22,6 +22,6 @@ jobs:
         - docker build -t nookazon-helper .
         - docker images
         - docker tag nookazon-helper $DOCKER_USERNAME/nookazon-helper
-        - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        - echo "${DOCKER_PASSWORD}" | docker login -u "{$DOCKER_USERNAME}" --password-stdin
         - docker push $DOCKER_USERNAME/nookazon-helper
       name: "Build and Push Docker image"

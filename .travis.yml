@@ -6,6 +6,7 @@ node_js:
  - "lts/*"
 
 stages:
+  - test
   - name: build
     if: branch = master
   - name: deploy
@@ -15,18 +16,19 @@ jobs:
   include:
     - stage: test
       script: 
-      - npm run test
+        - cd src/
+        - npm run test
       name: "Tests"
 
     - stage: build
       script: 
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t nookazon-helper src/
+        - docker build -t nookazon-helper src/
       name: "Build Docker image"
 
     - stage: upload
       script:
-      - docker images
-      - docker tag nookazon-helper $DOCKER_USERNAME/nookazon-helper
-      - docker push $DOCKER_USERNAME/nookazon-helper
+        - docker images
+        - docker tag nookazon-helper $DOCKER_USERNAME/nookazon-helper
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker push $DOCKER_USERNAME/nookazon-helper
       name: "Push Docker image to repo"

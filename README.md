@@ -17,8 +17,8 @@ The bot only has 2 commands:
   - Retriving a user's information: `!nook DiscordUsername`
   ```
   Nookazon information for Mac:
-  Wishlist: https://nookazon.com/profile/1922629919/wishlist
-  Catalog: https://nookazon.com/profile/1922629919/catalog
+  Wishlist: https://nookazon.com/profile/1234567890/wishlist
+  Catalog: https://nookazon.com/profile/1234567890/catalog
   ```  
 - `!help`: display help for the specified command
   - e.g. `!help nookazon` will show the help text for the nookazon command

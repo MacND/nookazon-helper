@@ -19,7 +19,8 @@ The bot only has 2 commands:
   Nookazon information for Mac:
   Wishlist: https://nookazon.com/profile/1234567890/wishlist
   Catalog: https://nookazon.com/profile/1234567890/catalog
-  ```  
+  ``` 
+  *Note: If a user's username has spaces in it, wrap their username in double quotes, e.g. `!nook "Discord Username"`*
 - `!help`: display help for the specified command
   - e.g. `!help nookazon` will show the help text for the nookazon command
   

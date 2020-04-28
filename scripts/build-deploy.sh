@@ -23,7 +23,7 @@ if [[ -n "$TRAVIS_BRANCH" ]]; then
           printf '    %s\n' "$file_name"
         fi
       done
-      docker build -t sudomac/nookazon-helper
+      docker build -t sudomac/nookazon-helper .
       docker images
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       docker push "$DOCKER_USERNAME"/nookazon-helper

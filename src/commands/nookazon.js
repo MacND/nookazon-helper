@@ -1,4 +1,4 @@
-const db = require(__basedir + '/utils/database/db.js');
+const db = require(__basedir + '/src/utils/database/db.js');
 
 module.exports = {
   run: async (client, message, args) => {

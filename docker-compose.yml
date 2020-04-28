@@ -29,6 +29,6 @@ services:
     restart: on-failure
     volumes:
       - db_data:/var/lib/mysql
-      - ./utils/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - ./src/utils/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
 volumes:
  db_data:

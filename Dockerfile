@@ -6,4 +6,4 @@ WORKDIR /etc/nookazon-helper
 COPY package.json /etc/nookazon-helper
 RUN npm install
 COPY . /etc/nookazon-helper
-CMD ["node", "main.js"]
+CMD ["node", "index.js"]

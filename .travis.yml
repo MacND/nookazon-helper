@@ -19,9 +19,5 @@ jobs:
 
     - stage: build-deploy
       script: 
-        - docker build -t nookazon-helper .
-        - docker images
-        - docker tag nookazon-helper $DOCKER_USERNAME/nookazon-helper
-        - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-        - docker push $DOCKER_USERNAME/nookazon-helper
+        - bash scripts/build-push.sh
       name: "Build and Push Docker image"

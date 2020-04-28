@@ -2,7 +2,7 @@
   "name": "nookazon-helper",
   "version": "0.1.0",
   "description": "A DiscordJS bot for storing and recalling Nookazon profiles",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "eslint . --fix"
   },

@@ -19,5 +19,5 @@ jobs:
 
     - stage: build-deploy
       script: 
-        - bash scripts/build-push.sh
+        - bash scripts/build-deploy.sh
       name: "Build and Push Docker image"
